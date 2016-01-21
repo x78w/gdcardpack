@@ -1,0 +1,212 @@
+<!doctype html author:cdll@20150603>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Cache-Control" CONTENT="no-cache">
+        <title>会员卡办理</title>
+<!--		会员卡办理-->
+
+<!--        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+<!--        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+        
+    </head>
+    
+    <body class="gd-cardpack" ms-controller='gd_cardpack'>
+        <div class="col-12">
+            <section class="cardpack-top">
+				<br>
+				<div class="box-88 text-center">
+					<div class="col-11 center-block">
+						<img class="col-11 center-block" src="img/cardpack_top.png" style='border-top-left-radius:5px;border-top-right-radius:5px;'/>
+					</div>
+					<div class="col-11 center-block cardpack-top-liner">
+						<div class="cardpack-top-leftdot pull-left"></div>
+						<div class="cardpack-top-rightdot pull-right"></div>
+					</div>
+				</div>
+				<br>
+			</section>
+			<section>
+				<form>
+					<div class="handle-name p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">姓名:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<input class="col-12 tosub" type="text" name='user_name' placeholder='请输入您的姓名（必填）' pattern='[^/\s/g]{1,}'/>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="handle-gender p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">性别:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<div class="col-xs-1 col-xs-offset-1"></div>
+							<input class="col-xs-2 tosub hide" type="radio" name='gender' id='male' value='1' checked/><label class="col-4 pull-left gd-checkbox" for="male"> 男</label>
+							<input class="col-xs-2 tosub hide" type="radio" name='gender' id='female' value='0'/><label class="col-4 pull-left gd-checkbox" for="female"> 女</label>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="handle-phone p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">手机:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<input class="col-12 tosub" name="user_tel" type="text" placeholder='请输入您的手机号（必填）'/>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="handle-birth p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">生日:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<input class="col-12 tosub" name="user_birth" type="text" placeholder='请输入您的出生日期（必填）'/>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="handle-address p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">住址:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<input type="text" class="col-xs-4" name="user_city" value="上海市" readOnly/>
+							<select style="border:1px solid lightgray;" name="user_area">
+								<option ms-repeat-el='area_list'>{{el}}</option>
+							</select>
+							<input class="col-12 tosub" name="user_address" type="text" placeholder='请输入您的联系地址（必填）'/>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="handle-verify p">
+						<div class="col-xs-3 text-center">
+							<b class="text-green">验证:</b>
+						</div>
+						<div class="col-8 pull-left">
+							<input class="col-xs-6 tosub" type="text" name="vericode" placeholder='验证码（必填）'/>
+							<button class="col-xs-5 col-xs-offset-1 btn btn-default" style="padding:2.5px 5px;background:none;"><small>获取验证码</small></button>
+						</div>
+						<div class='clear'></div>
+					</div>
+					<div class="p col-xs-12">
+						<div class="col-7 pull-left">
+							<input class="col-xs-1 hide" type="checkbox" id='readen' name="readen" value='true'/>
+							<label class="gd-checkbox" for="readen">我已经阅读会员须知</label>
+						</div>
+						<a href="#reading" ms-click='showReading' class="col-5 pull-left text-right">
+							<b class="a text-green">查看会员须知 ></b>
+						</a>
+					</div>
+					<div class="center-block text-center container-fluid">
+						<button class="btn btn-block btn-gd-green" type="submit">注册微信会员卡</button>
+						<br>
+<!--						<textarea cols='30' rows='4'>This is my statement one.&#13;&#10;This is my statement2</textarea>-->
+					</div>
+				</form>
+			</section>
+			<section class="card-pack-notice" id="reading" style="background:#ececec;position:fixed;top:100%;left:0;width:100%;">
+				<div class="col-12 p text-center">
+					<button class="btn btn-md text-white text-center pull-left" style="margin-top:5px;width:0;margin-right:-5%;" ms-click='hideReading'><</button>
+					<div class="text-white zyo-box" style="background:#47be00;border-top:0;">会员须知</div>
+				</div>
+				<div class="">
+					<p class="p box-88">&nbsp;特权说明</p>
+					<div class="zyo-box box-88">
+						<dl class="p">
+							<dd>1、顾客持会员卡于国药控股国大药房上海连锁有限公司指定门店消费即可享受会员专享特惠等增值服务。
+							</dd>
+							<dd>2、持会员卡于每月6日、16日、26日、29日、30日至指定门店（国大药房东盛店、七宝店除外）享受85折优惠（各门店指定产品及特价商品除外）。
+							</dd>
+							<dd>3、持会员卡消费享受积分优惠，每10元积1分，不满10元不积分。积分一年内有效，具体积分清零时间请以门店公告为准。
+							</dd>
+							<dd>4、会员积分可享受积分免费兑换礼品、代金券、积分抽奖等活动，具体活动规则详见店内公告或以上海国大药房官方微信宣传为准。
+							</dd>
+							<dd>5、每次消费请主动出示会员卡，积分过期不补。
+							</dd>
+							<dd>6、此卡只限本人使用，不得转让。
+							</dd>
+							<dd>温情提示：会员章程如有变动，恕不另行通知。
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="">
+					<p class="p box-88">&nbsp;使用须知</p>
+					<div class="zyo-box box-88">
+						<dl class="p">
+							<dd>结账时打开上海国大的微信公众号，点击会员卡中心，向店员出示条形码即可享受优惠和积分。
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</section>
+        </div>
+
+<!--        <script id="zyoAPIcore" src="js/zyo-api-url.js"></script>-->
+<!--        <script id='jqueryCore' src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>-->
+        <script type="text/javascript" id="avalonCore" src="http://sandbox.runjs.cn/uploads/rs/65/703jo9wq/avalon.js"></script>
+<!--        <script id='jqueryCore' src="js/jquery-1.9.1.min.js"></script>-->
+        <script>
+            avalon.ready(function(){
+				gd_store= avalon.define({
+                    $id: 'gd_cardpack',
+                    user: {
+                        username: '',
+                        gender: 1,
+                        birthday: (function(){
+                            var date= new Date()
+                            var temp= date.getFullYear()+ '-'+ ('0'+date.getMonth()).slice(-2)+ '-'+ ('0'+date.getDate()).slice(-2)
+                            return temp
+                        })(),
+                        phone: '',
+                        city: '上海市',
+                        zone: '静安区',
+                        address: '',
+                        vericode: '',
+                        openid: '',
+                        readen: '',
+                    },
+                    fuckGender: function(n){
+                        gd_cardpack.user.gender= n;
+                    },
+                    area_list: ["静安区","黄浦区","卢湾区","徐汇区","长宁区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县","城桥镇"],
+					showReading: function(){
+//						window.scrollTo(~~document.documentElement.clientWidth,0);
+						reading.style.top= 0;
+						reading.style.position= 'absolute';
+					},
+					hideReading: function(){
+//						window.scrollTo(~~document.body.style.left,0);
+						reading.style.position= 'fixed';
+						reading.style.top= '100%';
+						readen.checked= true;
+                        history.go(-1);
+					},
+                })
+                window.onhashchange= function(){
+                    if(!window.location.hash){
+                        reading.style.position= 'fixed';
+						reading.style.top= '100%';
+                    }
+                }
+                avalon.scan();
+            })
+        </script>
+<!--
+        <script id='baiduAnalysis'>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "http://hm.baidu.com/hm.js?5002c973b1b7f507356d12df430097f5";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+-->
+    </body>
+</html>

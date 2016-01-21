@@ -1,0 +1,160 @@
+<!doctype html author:cdll@20150603>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Cache-Control" CONTENT="no-cache">
+        <title>国大药房优惠券</title>
+
+<!--        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<!--        <link rel="stylesheet" type="text/css" href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css"/>-->
+        <link rel="stylesheet" type="text/css" href="module/owl.carousel/owl-carousel/owl.carousel.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+<!--        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+        
+    </head>
+    
+    <body class="gd-tickets" ms-controller='gd_tickets'>
+        <div class="col-12">
+            <section class="tickets-top row">
+                <!--owl-->
+                <div id="owl-demo" class="owl-carousel">
+                    <div class="item"><img src="img/_img.png" alt='上海国大药房 微信' width='100%' height=104></div>
+                    <div class="item"><img src="img/_img.png" alt='上海国大药房 微信' width='100%' height=104></div>
+                    <div class="item"><img src="img/_img.png" alt='上海国大药房 微信' width='100%' height=104></div>
+                </div>
+                <!--owl-->
+			</section>
+            <section class="tickets-center">
+                <h4 class="col-xs-6">尊敬的会员 <span ms-text='user.name'></span></h4>
+                <h4 class="col-xs-6">您的当前积分：<span ms-text='user.scores'></span></h4>
+			</section>
+            <section id="owl-list" class="-owl-carousel tickets-list">
+                <div class="owl-controls" style="margin-bottom:2em;height:3em;"><div class="owl-pagination">
+                    <div data-page=0 class="owl-page active"><span class=""></span></div>
+                    <div data-page=1 class="owl-page"><span class=""></span></div></div>
+                </div>
+<!--list 1-->
+                <dl class="tickets-list item" >
+                    <dt class="clear" ms-repeat-el='list'>
+                        <div class="col-4 pull-left">
+                            <img class="col-11" ms-src="el.tick_pic"/>
+                        </div>
+                        <div class="col-8 pull-left">
+                            <div class="col-8 pull-left" style="margin-top:.9em;">
+                                <p class="p text-black" ms-text='el.tick_name'></p>
+                                <p class="p text-black">
+                                    <span class="text-black" ms-text='el.spend_scores'></span>积分
+                                    <span class="text-black text-used" ms-text='el.tick_cost'></span>
+                                </p>
+                                <p class="p text-gray" style="margin-right:-45%;">有效期至<span ms-text='el.end_line'></span></p>
+                            </div>
+                            <div class="col-4 pull-left">
+                                <button class="btn btn-gd-green col-11 pull-right" style="margin-top:50%;top:-10px;position:relative;" ms-click='pushList("毛巾", "img/_img.png", "120", "30", "2016-12-01")'>领取</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </dt>
+                </dl>
+<!--list 1-->
+<!--list 2-->
+                <dl class="tickets-list item hide" >
+                    <dt class="clear" ms-repeat-el='list'>
+                        <div class="col-4 pull-left">
+                            <img class="col-11" ms-src="el.tick_pic"/>
+                        </div>
+                        <div class="col-8 pull-left">
+                            <div class="col-8 pull-left" style="margin-top:.9em;">
+                                <p class="p text-black" ms-text='el.tick_name'></p>
+                                <p class="p text-black">
+                                    <span class="text-black" ms-text='el.spend_scores'></span>积分
+                                    <span class="text-black text-used" ms-text='el.tick_cost'></span>
+                                </p>
+                                <p class="p text-gray" style="margin-right:-45%;">有效期至<span ms-text='el.end_line'></span></p>
+                            </div>
+                            <div class="col-4 pull-left">
+                                <button class="btn btn-gd-green col-11 pull-right" style="margin-top:50%;top:-10px;position:relative;" ms-click='pushList("毛巾", "img/_img.png", "120", "30", "2016-12-01")'>领取</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </dt>
+                </dl>
+<!--list 2-->
+            </section>
+        </div>
+
+        <script type="text/javascript" id="avalonCore" src="js/avalon.js"></script>
+        <script>
+            avalon.config({
+                paths: {
+                    jquery: 'http://libs.baidu.com/jquery/1.9.1/jquery.js',
+//                    owl: 'http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.min.js'
+                    owl: '../module/owl.carousel/owl-carousel/owl.carousel.min.js'
+                },
+                shim: {
+                    jquery: {
+                        exports: 'jQuery',
+                    },
+                    owl: {
+                        exports: 'owl'
+                    }
+                },
+                debug: 0,
+            })
+            avalon.ready(function(){
+                require(['jquery'], function($){
+                    require(['owl'], function(){
+                        $("#owl-demo").owlCarousel({
+                            navigation : false,
+                            slideSpeed : 300,
+                            pagination : true,
+                            paginationSpeed : 400,
+//                          singleItem : true,// "singleItem:true" is a shortcut for:
+                            items : 1, 
+                            itemsDesktop : false,
+                            itemsDesktopSmall : false,
+                            itemsTablet: false,
+                            itemsMobile : false
+                        })
+                        $('#owl-list .owl-page').on('click', function(){
+                            var page_i= $(this).data('page');
+                            $('#owl-list .owl-page').removeClass('active');
+                            $('#owl-list .owl-page').eq(page_i).addClass('active');
+                            $('#owl-list .item').toggleClass('hide');
+                        })
+                    })
+                    gd_store= avalon.define({
+                        $id: 'gd_tickets',
+                        user: {
+                            name: 'uname',
+                            scores: '120',
+                            oid: '',
+                        },
+                        list: [{tick_name: '马克杯', tick_pic: 'img/_img.png', spend_scores: '100', tick_cost: '￥28', end_line: '2016年12月31日'}],
+                        pushList: function(tick_name, tick_pic, spend_scores, tick_cost, end_line){
+                            gd_store.list.push({
+                                tick_name: tick_name,
+                                tick_pic: tick_pic,
+                                spend_scores: spend_scores,
+                                tick_cost: '￥'+ tick_cost,
+                                end_line: end_line.split('-')[0]+ '年'+ end_line.split('-')[1]+ '月'+ end_line.split('-')[2]+ '日',
+                            })
+                        },
+                    })
+                    avalon.scan();
+                })
+            })
+        </script>
+        <script id='baiduAnalysis'>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "http://hm.baidu.com/hm.js?5002c973b1b7f507356d12df430097f5";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    </body>
+</html>
